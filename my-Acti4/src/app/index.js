@@ -8,6 +8,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { layout, spacing, typography, surfaces, interactive } from '@/styles';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -30,20 +31,20 @@ function getDevMenuHint() {
 
 export default function HomeScreen() {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={[layout.screen, layout.centeredRow]}>
       <SafeAreaView style={styles.safeArea}>
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
+          <ThemedText type="title" style={typography.hero}>
             Welcome to&nbsp;Expo
           </ThemedText>
         </ThemedView>
 
-        <ThemedText type="code" style={styles.code}>
+        <ThemedText type="code" style={typography.code}>
           get started
         </ThemedText>
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
+        <ThemedView type="backgroundElement" style={[surfaces.card, layout.fullWidth]}>
           <HintRow
             title="Try editing"
             hint={<ThemedText type="code">src/app/index.js</ThemedText>}
@@ -62,11 +63,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
   safeArea: {
     flex: 1,
     paddingHorizontal: Spacing.four,
@@ -81,18 +77,5 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: Spacing.four,
     gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
   },
 });
