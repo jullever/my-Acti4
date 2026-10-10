@@ -9,18 +9,38 @@ import { Platform } from 'react-native';
 
 export const Colors = {
   light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+    // core
+    text: '#0F172A',
+    background: '#F8FAFC',
+    backgroundElement: '#EEF2FF',
+    backgroundSelected: '#C7D2FE',
+    textSecondary: '#64748B',
+    // extended
+    accent: '#6366F1',
+    accentSoft: '#EEF2FF',
+    card: '#FFFFFF',
+    cardBorder: '#E2E8F0',
+    muted: '#94A3B8',
+    success: '#22C55E',
+    warning: '#F59E0B',
+    danger: '#EF4444',
   },
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    // core
+    text: '#F1F5F9',
+    background: '#0F172A',
+    backgroundElement: '#1E293B',
+    backgroundSelected: '#334155',
+    textSecondary: '#94A3B8',
+    // extended
+    accent: '#818CF8',
+    accentSoft: '#1E1B4B',
+    card: '#1E293B',
+    cardBorder: '#334155',
+    muted: '#475569',
+    success: '#4ADE80',
+    warning: '#FCD34D',
+    danger: '#F87171',
   },
 } as const;
 
@@ -59,6 +79,8 @@ export const Spacing = {
   four: 24,
   five: 32,
   six: 64,
+  seven: 80,
+  eight: 96,
 } as const;
 
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
