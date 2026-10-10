@@ -98,11 +98,15 @@ const glowKeyframe = new Keyframe({
 export function AnimatedIcon() {
   return (
     <View style={styles.iconContainer}>
+      {/* Spinning glow halo — larger to match new icon size */}
       <Animated.View entering={glowKeyframe.duration(60 * 1000 * 4)} style={styles.glow}>
         <Image style={styles.glow} source={require('@/assets/images/logo-glow.png')} />
       </Animated.View>
 
+      {/* Background squircle with indigo → violet gradient */}
       <Animated.View entering={keyframe.duration(DURATION)} style={styles.background} />
+
+      {/* Logo image */}
       <Animated.View style={styles.imageContainer} entering={logoKeyframe.duration(DURATION)}>
         <Image style={styles.image} source={require('@/assets/images/expo-logo.png')} />
       </Animated.View>
@@ -115,32 +119,48 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  // Glow halo — scaled up to wrap the larger icon
   glow: {
-    width: 201,
-    height: 201,
+    width: 240,
+    height: 240,
     position: 'absolute',
   },
+
+  // Icon container — 160×160 (was 128×128)
   iconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 128,
-    height: 128,
+    width: 160,
+    height: 160,
     zIndex: 100,
   },
+
+  // Logo — proportionally scaled up
   image: {
-    width: 76,
-    height: 71,
+    width: 92,
+    height: 86,
   },
+
+  // Background squircle — indigo #6366F1 → violet #A855F7, softer radius
   background: {
-    borderRadius: 40,
-    experimental_backgroundImage: `linear-gradient(180deg, #3C9FFE, #0274DF)`,
-    width: 128,
-    height: 128,
+    borderRadius: 48,
+    experimental_backgroundImage: `linear-gradient(145deg, #6366F1, #A855F7)`,
+    width: 160,
+    height: 160,
     position: 'absolute',
+    // Subtle inner shadow via shadow props (iOS) / elevation (Android)
+    shadowColor: '#A855F7',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.45,
+    shadowRadius: 20,
+    elevation: 12,
   },
+
+  // Splash screen overlay — deep indigo to match the new gradient start
   splashOverlay: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: '#208AEF',
+    backgroundColor: '#1E1B4B',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
